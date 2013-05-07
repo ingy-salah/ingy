@@ -1,0 +1,647 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>pixi.js example 1</title>
+	<style>
+		body {
+			margin:0;
+			padding: 0;
+			background-color: #000000;
+		}
+	
+	</style>
+	<script src="pixi.js"></script>
+	<script src="../../src/pixi/renderers/WebGLRenderer.js"></script>
+</head>
+<body >
+<div style="color:yellow;margin-left:500px"id="score">Score: 0</div>
+<span id="kp"></span>
+<span id="kc"></span>
+	<script>
+	
+	
+
+	
+	//margin-left:100px;
+	
+	// create an new instance of a pixi stage
+	var interactive = true;
+	var stage = new PIXI.Stage(0x000000, interactive);
+	
+	screenx=window.innerWidth;
+	screeny=window.innerHeight;
+	//window.innerWidth,window,innerHeight
+	//bg.scale.x=1/1000*window.innerWidth
+	//.position.x
+	//onmousemore
+	
+	// create a renderer instance be5leek t2dr tesht3'l 3ala diff plateforms
+	var renderer = PIXI.autoDetectRenderer(screenx-20, screeny-20);
+	
+	renderer.view.style.position = "absolute";
+	renderer.view.style.top = "20px";
+	renderer.view.style.left = "0px";
+	
+	// add the renderer view element to the DOM
+	document.body.appendChild(renderer.view);
+	
+	//requestAnimFrame( animate );
+	
+	
+	
+	// create a background..
+	var background = PIXI.Sprite.fromImage("earth.jpg");
+	
+	background.position.y=screeny-900;
+
+	// add background to stage..
+	stage.addChild(background);
+
+	
+	var background2 = PIXI.Sprite.fromImage("stars.jpg");
+	
+	background2.position.y=screeny-1680;
+
+	// add background to stage..
+	stage.addChild(background2);
+	
+	
+	var texture5 = PIXI.Texture.fromImage("ball2.png");
+	// create a new Sprite using the texture
+	var explosion = new PIXI.Sprite(texture5);
+	
+	
+	// create a texture from an image path
+	var texture = PIXI.Texture.fromImage("plane1.png");
+	// create a new Sprite using the texture
+	var plane = new PIXI.Sprite(texture);
+	plane.setInteractive(true);
+	
+	plane.scale.y=0.00055*screeny;
+	plane.scale.x=0.0003* screenx;
+	
+	// center the sprites anchor point
+	plane.anchor.x = 0.5;
+	plane.anchor.y = 0.5;
+	
+	// move the sprite t the center of the screen
+	plane.position.x = 0.4*screenx;
+	plane.position.y = 0.85*screeny;
+	
+	stage.addChild(plane);
+	
+	
+	
+	var texturep2 = PIXI.Texture.fromImage("plane2.png");
+	var plane2 = new PIXI.Sprite(texturep2);
+	plane2.setInteractive(true);
+	plane2.scale.y=0.00055*screeny;
+	plane2.scale.x=0.0003* screenx;
+	plane2.anchor.x = 0.5;
+	plane2.anchor.y = 0.5;
+	plane2.position.x = 0.2*screenx;
+	plane2.position.y = 0.85*screeny;
+	//stage.addChild(plane2);
+	
+	/*document.onkeydown= function(e){
+		var key_press= String.fromCharCode(e.keycode);
+		var key_code = e.keycode;
+		if(key_code==13)
+		{
+			score1=88888888;
+			x.innerHTML=" player1:  "+ score1 + "   player2:    " +score2;
+		}
+		
+	}*/
+	
+
+	
+	
+	
+	
+	
+	var stop=0;
+	
+	var enemycount=0;
+	var enemies=[];
+	var enemyTexture = new PIXI.Texture.fromImage("1.png");
+	
+	setInterval(enemymove,600);
+	
+	function enemymove(){
+		for(var j=0;j<2;j++)
+		{
+		if(stop==0){
+			if (start==1){
+			var enemy = new PIXI.Sprite(enemyTexture);
+			enemies.push(enemy);
+		
+			enemy.scale.y=0.00055*screeny;
+			enemy.scale.x=0.0003* screenx;
+			enemy.anchor.x = 0.5;
+			enemy.anchor.y = 0.5;
+			enemy.position.x =0.72* Math.random()*screenx;
+			enemy.position.y = 0
+			stage.addChild(enemy);
+			enemycount+=1;
+		}
+		}}
+	}
+
+	var eballcount=0;
+	var eballs=[];
+	var eballTexture = new PIXI.Texture.fromImage("ball.png");
+	setInterval(eballmove,1000);
+	function eballmove()
+	{
+	for(var d=0;d<2;d++)
+		{
+	if(stop==0){
+	if(start==1){
+		var eball = new PIXI.Sprite(eballTexture);
+		eballs.push(eball);
+		//enemy.scale.y=0.00055*screeny;
+		//enemy.scale.x=0.0003* screenx;
+		eball.anchor.x = 0.5;
+		eball.anchor.y = 0.5;
+		eball.position.x =0.72* Math.random()*screenx;
+		eball.position.y = 0
+		stage.addChild(eball);
+		eballcount+=1;
+		}
+		}
+		}
+	}
+	
+	
+	
+		var live1 = PIXI.Sprite.fromImage("11.png");
+	live1.position.x = 0.803 *screenx;
+	live1.position.y = 0.65*screeny;
+	var live2 = PIXI.Sprite.fromImage("22.png");
+	live2.position.x = 0.803 *screenx;
+	live2.position.y = 0.65*screeny;
+	var live3 = PIXI.Sprite.fromImage("33.png");
+	live3.position.x = 0.803 *screenx;
+	live3.position.y = 0.65*screeny;
+	stage.addChild(live3);
+	
+	
+	var live122 = PIXI.Sprite.fromImage("112.png");
+	live122.position.x = 0.89 *screenx;
+	live122.position.y = 0.65*screeny;
+	var live222 = PIXI.Sprite.fromImage("222.png");
+	live222.position.x = 0.89 *screenx;
+	live222.position.y = 0.65*screeny;
+	var live322 = PIXI.Sprite.fromImage("332.png");
+	live322.position.x = 0.89 *screenx;
+	live322.position.y = 0.65*screeny;
+	
+	
+	var gameover = PIXI.Sprite.fromImage("gameover.jpg");
+	
+	
+	var livespic = PIXI.Sprite.fromImage("lives.jpg");
+	livespic.position.x = 0.83 *screenx;
+	livespic.position.y = 0.55*screeny;
+	stage.addChild(livespic);
+	
+	
+	var player1 = PIXI.Sprite.fromImage("player1.jpg");
+	
+	
+	player1.position.x = 0.79 *screenx;
+	player1.position.y = 0.2*screeny;
+	
+	
+	var player2 = PIXI.Sprite.fromImage("player2.jpg");
+	
+	
+	player2.position.x = 0.87 *screenx;
+	player2.position.y = 0.2*screeny;
+	
+	var pause = PIXI.Sprite.fromImage("pause.jpg");
+	
+	
+	pause.position.x = 0.81 *screenx;
+	
+	pause.position.y = 0.01*screeny;
+	
+	
+	player1.setInteractive(true);
+	player2.setInteractive(true);
+	pause.setInteractive(true);
+
+	var start=0;
+	var dual=0;
+	
+	
+	
+	soundEmbed = document.createElement("embed");
+	soundEmbed.setAttribute("src", "boom.wav");
+	soundEmbed.setAttribute("hidden", false);
+	soundEmbed.setAttribute("height",0);
+	soundEmbed.setAttribute("loop", true);
+	soundEmbed.setAttribute("type", "video/quicktime");
+	//application/x-mplayer2
+	//video/quicktime
+	// windows media player
+	document.body.appendChild(soundEmbed);
+	
+
+	player1.mousedown = player1.touchstart = function(data){
+			
+			if(stop==1)
+			{
+			  stop=0;
+			  stage.removeChild(gameover);
+			  lives=3;
+			}
+			if (start==0){
+			start=1;}
+			
+			requestAnimFrame( move );
+		}
+	player2.mousedown = player2.touchstart = function(data){
+			
+			if(stop==1)
+			{
+			  stop=0;
+			  stage.removeChild(gameover);
+			  lives=3;
+			}
+			if (start==0){
+			start=1;}
+			
+			requestAnimFrame( move );
+			dual=1;
+			stage.addChild(plane2);
+			stage.addChild(live322);
+		}
+	
+	pause.mousedown = pause.touchstart = function(data){
+			start=0;
+		}
+	
+	stage.addChild(player1);
+	stage.addChild(pause);
+	stage.addChild(player2);
+	
+	
+	var bulletscount6=0;
+	var bullets2=[];
+	var ballTexture2 = new PIXI.Texture.fromImage("fire2.png");
+	
+	
+	window.onkeydown=keydown;
+	function keydown(e)
+	{
+		if(e.keyCode==37 && plane2.position.x>0.026*screenx)
+			plane2.position.x-=10;
+		if(e.keyCode==39 && plane2.position.x<0.74*screenx)
+			plane2.position.x+=10;
+		if(e.keyCode==38 && plane2.position.y>0.04*screeny)
+			plane2.position.y-=10;
+		if(e.keyCode==40 && plane2.position.y<screeny)
+			plane2.position.y+=10;
+		
+		if(e.keyCode==32)
+		{
+			
+			var tempBall2 = new PIXI.Sprite(ballTexture2);
+			tempBall2.position.x =plane2.position.x;
+			tempBall2.position.y =plane2.position.y;
+			tempBall2.anchor.x = -1.4;
+			tempBall2.anchor.y = 0.9;
+
+			bullets2.push(tempBall2);
+
+			stage.addChild(tempBall2);
+		
+			var tempBall22 = new PIXI.Sprite(ballTexture2);
+			tempBall22.position.x =plane2.position.x;
+			tempBall22.position.y =plane2.position.y;
+			tempBall22.anchor.x = 3.2;
+			tempBall22.anchor.y = 0.9;
+
+			bullets2.push(tempBall22);
+
+			stage.addChild(tempBall22);
+		
+			bulletscount6+=2;
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	var xposition;
+	var yposition;
+	document.onmousemove=function(e){
+     xposition=e.pageX;
+     yposition=e.pageY;
+     }
+	
+	var bulletscount=0;
+	var bullets=[];
+	var ballTexture = new PIXI.Texture.fromImage("fire2.png");
+	
+	plane.mousedown = plane.touchstart = function(data)
+	{
+		this.isdown=true;
+		var tempBall = new PIXI.Sprite(ballTexture);
+		tempBall.position.x =plane.position.x;
+		tempBall.position.y =plane.position.y;
+		tempBall.anchor.x = -1.4;
+		tempBall.anchor.y = 0.9;
+
+		bullets.push(tempBall);
+
+		stage.addChild(tempBall);
+		
+		var tempBall2 = new PIXI.Sprite(ballTexture);
+		tempBall2.position.x =plane.position.x;
+		tempBall2.position.y =plane.position.y;
+		tempBall2.anchor.x = 3.2;
+		tempBall2.anchor.y = 0.9;
+
+		bullets.push(tempBall2);
+
+		stage.addChild(tempBall2);
+		
+		bulletscount+=2;
+	}
+	
+	var x;
+	var score1=0;
+	var score2=0;
+	
+	x=document.getElementById("score");
+	x.innerHTML=" player1:  "+ score1 + "   player2:    " +score2;
+	
+	
+	var lives=3;
+	var lives2=3;
+	
+	//var mp3snd = "home-sound.mp3";
+
+//document.write('<audio autoplay="autoplay">');
+//document.write('<source src="'+mp3snd+'" type="audio/mpeg">');
+//document.write('<!--[if lt IE 9]>');
+//document.write('<bgsound src="'+mp3snd+'" loop="1">');
+//document.write('<![endif]-->');
+//document.write('</audio>');
+	
+	var lef=0;
+	var lef2=0;
+	
+	
+
+	requestAnimFrame( move );
+	function move(){
+		
+		if(start==1){
+		requestAnimFrame( move);}
+		
+		
+		background.position.y +=0.5; 
+		background2.position.y +=0.5; ;
+		renderer.render(stage);
+		
+		if (background.position.y ==screeny)
+		{
+			background.position.y =screeny-1700;
+		
+		}
+		else if (background2.position.y ==screeny)
+		{
+			background2.position.y =screeny-1600;
+		
+		}
+		
+		if(xposition<0.75*screenx)
+		{
+		plane.position.x = xposition;
+			
+		plane.position.y = yposition;}
+		
+		bulletscount3=bulletscount;
+		for (var i=0;i<bulletscount3;i++)
+		{
+		  bullets[i].position.y-=8;
+		  if(bullets[i].position.y<-1 )
+		  {
+			stage.removeChild(bullets[i]);
+			bullets.splice(i,1);
+			bulletscount-=1;
+		  }
+		}
+		
+		if(dual==1){
+		bulletscount7=bulletscount6;
+		for (var l=0;l<bulletscount7;l++)
+		{
+		  bullets2[l].position.y-=3.5;
+		  if(bullets2[l].position.y<-1 )
+		  {
+			stage.removeChild(bullets2[l]);
+			bullets2.splice(l,1);
+			bulletscount6-=1;
+		  }
+		 }
+		 }
+		
+		
+		for(var k=0;k<enemycount;k++)
+		{
+		  
+		  enemies[k].position.y+=3;
+		 
+		}
+		
+		
+		for(var z=0;z<eballcount;z++)
+		{
+		 
+		  eballs[z].position.y+=4.5;
+		 
+		}
+		
+		enemycount2=enemycount;
+		for(var g=0;g<enemycount2;g++)
+		{
+			if (enemies[g].position.y+0.00055*screeny*(1/2)*enemies[g].height>(plane.position.y-0.00055*screeny*(1/2)*plane.height)+20
+			    && enemies[g].position.y-0.00055*screeny*(1/2)*enemies[g].height<(plane.position.y+0.00055*screeny*(1/2)*plane.height)+20
+			    && enemies[g].position.x-0.0003*screenx*(1/2)*enemies[g].width<(plane.position.x+0.0003*screenx*(1/2)*plane.width)-20
+				&& enemies[g].position.x+0.0003*screenx*(1/2)*enemies[g].width>(plane.position.x-0.0003*screenx*(1/2)*plane.width)+20 )
+			{
+				stage.removeChild(enemies[g]);
+				//stage.removeChild(plane);
+				enemies.splice(g,1);
+				enemycount-=1;
+				lives-=1;
+				explosion.position.x =plane.position.x;
+				explosion.position.y =plane.position.y;
+				explosion.anchor.x = 0.5;
+				explosion.anchor.y = 0.5;
+				
+				stage.addChild(explosion);
+				lef2=lef;
+				
+			}
+			
+			if(dual==1){
+			if (enemies[g].position.y+0.00055*screeny*(1/2)*enemies[g].height>(plane2.position.y-0.00055*screeny*(1/2)*plane2.height)+20
+			    && enemies[g].position.y-0.00055*screeny*(1/2)*enemies[g].height<(plane2.position.y+0.00055*screeny*(1/2)*plane2.height)+20
+			    && enemies[g].position.x-0.0003*screenx*(1/2)*enemies[g].width<(plane2.position.x+0.0003*screenx*(1/2)*plane2.width)-20
+				&& enemies[g].position.x+0.0003*screenx*(1/2)*enemies[g].width>(plane2.position.x-0.0003*screenx*(1/2)*plane2.width)+20 )
+			{
+				stage.removeChild(enemies[g]);
+				//stage.removeChild(plane);
+				enemies.splice(g,1);
+				enemycount-=1;
+				lives2-=1;
+				explosion.position.x =plane2.position.x;
+				explosion.position.y =plane2.position.y;
+				explosion.anchor.x = 0.5;
+				explosion.anchor.y = 0.5;
+				
+				stage.addChild(explosion);
+				lef2=lef;
+				
+			}
+			}
+			
+		}
+		
+		
+		eballcount2=eballcount;
+		for(var m=0;m<eballcount2;m++)
+		{
+			if (eballs[m].position.y>(plane.position.y-0.00055*screeny*(1/2)*plane.height)
+			    && eballs[m].position.y<(plane.position.y+0.00055*screeny*(1/2)*plane.height)
+			    && eballs[m].position.x<(plane.position.x+0.0003*screenx*(1/2)*plane.width)
+				&& eballs[m].position.x>(plane.position.x-0.0003*screenx*(1/2)*plane.width) )
+			{
+				stage.removeChild(eballs[m]);
+				//stage.removeChild(plane);
+				eballs.splice(m,1);
+				eballcount-=1;
+				lives-=1;
+				explosion.position.x =plane.position.x;
+				explosion.position.y =plane.position.y;
+				explosion.anchor.x = 0.5;
+				explosion.anchor.y = 0.5;
+				
+				stage.addChild(explosion);
+				lef2=lef;
+				
+			}
+			
+			
+			if(dual==1)
+			{
+				if (eballs[m].position.y>(plane2.position.y-0.00055*screeny*(1/2)*plane2.height)
+			    && eballs[m].position.y<(plane2.position.y+0.00055*screeny*(1/2)*plane2.height)
+			    && eballs[m].position.x<(plane2.position.x+0.0003*screenx*(1/2)*plane2.width)
+				&& eballs[m].position.x>(plane2.position.x-0.0003*screenx*(1/2)*plane2.width) )
+			{
+				stage.removeChild(eballs[m]);
+				//stage.removeChild(plane);
+				eballs.splice(m,1);
+				eballcount-=1;
+				lives2-=1;
+				explosion.position.x =plane2.position.x;
+				explosion.position.y =plane2.position.y;
+				explosion.anchor.x = 0.5;
+				explosion.anchor.y = 0.5;
+				
+				stage.addChild(explosion);
+				lef2=lef;
+				
+			}
+			}
+		}
+		
+		
+		if(lives==2)
+		{
+			stage.addChild(live2);
+		}
+		if(lives==1)
+		{
+			stage.addChild(live1);
+		}
+		if(lives==0)
+		{
+			stage.addChild(gameover);
+			stop=1;
+		}
+		
+		
+		enemycount2=enemycount;
+		bulletscount2=bulletscount;
+		bulletscount9=bulletscount6;
+		for(var d=0;d<enemycount2;d++)
+		{
+			for(var h=0;h<bulletscount2;h++)
+			{
+				if ( bullets[h].position.y<enemies[d].position.y+0.00055*screeny*(1/2)*enemies[d].height 
+				     && bullets[h].position.x<enemies[d].position.x+0.0003*screenx*(1/2)*enemies[d].width 
+				     && bullets[h].position.x>enemies[d].position.x-0.0003*screenx*(1/2)*enemies[d].width	)
+				
+				{
+					stage.removeChild(enemies[d]);
+					stage.removeChild(bullets[h]);
+					enemies.splice(d,1);
+					bullets.splice(h,1);
+					enemycount-=1;
+					bulletscount-=1;
+					score1+=10;
+					x.innerHTML=" player1:  "+ score1 + "   player2:    " +score2;
+				}
+			}
+			if(dual==1)
+			{
+				for(var f=0;f<bulletscount9;f++)
+			{
+				if ( bullets2[f].position.y<enemies[d].position.y+0.00055*screeny*(1/2)*enemies[d].height 
+				     && bullets2[f].position.x<enemies[d].position.x+0.0003*screenx*(1/2)*enemies[d].width 
+				     && bullets2[f].position.x>enemies[d].position.x-0.0003*screenx*(1/2)*enemies[d].width	)
+				
+				{
+					stage.removeChild(enemies[d]);
+					stage.removeChild(bullets2[f]);
+					enemies.splice(d,1);
+					bullets2.splice(f,1);
+					enemycount-=1;
+					bulletscount6-=1;
+					score2+=10;
+					x.innerHTML=" player1:  "+ score1 + "   player2:    " +score2;
+				}
+			}
+			}
+			
+		}
+		
+		lef=lef+1;
+		if(lef>(lef2+7))
+		{
+			stage.removeChild(explosion);
+			lef=0;
+			lef2=0;
+		}
+		
+		renderer.render(stage);
+	}
+	
+
+	
+	
+	</script>
+
+	</body>
+</html>
